@@ -26,8 +26,8 @@ export enum TextType{
 }
 function getTextStyle(textType:TextType){
     switch(textType){
-    case TextType.Title  :  {return {color:GetColor(Color.Text), fontSize:20}}
-    case TextType.Header :  {return {color:GetColor(Color.Text), fontSize:20}}
+    case TextType.Title  :  {return {color:GetColor(Color.Text), fontSize:70}}
+    case TextType.Header :  {return {color:GetColor(Color.Text), fontSize:50}}
     // The default case should be exactly the same as the general text as an edge case
     case TextType.General:  {return {color:GetColor(Color.Text), fontSize:20}}
     default              :  {return {color:GetColor(Color.Text), fontSize:20}}

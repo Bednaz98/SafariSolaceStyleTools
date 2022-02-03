@@ -23,6 +23,7 @@ export enum Color{
 
 export default function GetColor(colorType:Color){
     const context = useContext(themeContext);
+
     switch(context.theme){
         // case Theme.default:{
         //     switch(colorType){

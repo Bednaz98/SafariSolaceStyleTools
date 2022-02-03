@@ -6,11 +6,15 @@ import GetColor, { Color } from "./colorstyle";
 
 
 
-export default function BasicModal(){
+export default function BasicModal(props){
+  let child = props.child
+  const openTitle = props?.openTitle ?? "null open title"
+  
+
   const [show, setShow] = useState(false);
   const styles = StyleSheet.create({
-
     modalView: {
+      flexDirection:"column",
       margin: 20,
       backgroundColor:GetColor(Color.Modal),
       borderRadius: 20,
@@ -32,14 +36,20 @@ export default function BasicModal(){
           visible={show}
           onRequestClose={() => {setShow(!show)}}>
           <View style={ {flex: 1, justifyContent: "center", alignItems: "center", marginTop: 22, backgroundColor:GetColor(Color.Modal)} }>
-            <BasicText text={"hello"}/>
             <View style={styles.modalView}>
-              <BasicButton title={"close"} onPress={()=>{setShow(!show)}}/>
+
+              <View>
+                {child}
+              </View>
+              <View>
+                <BasicButton title={"close"} onPress={()=>{setShow(!show)}}/>
+              </View>
+
             </View>
           </View>
         </Modal>
 
-        <BasicButton title={"open"} onPress={()=>{setShow(true)}}/>
+        <BasicButton title={openTitle} onPress={()=>{setShow(true)}}/>
 
       </View>)
       
