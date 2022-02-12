@@ -1,22 +1,19 @@
 import React from "react";
 import { Button, NativeSyntheticEvent, NativeTouchEvent, View } from "react-native";
 import { v4 } from "uuid";
-import GetColor, { Color } from "./colorstyle";
+import GetColor, { borderRadius, Color, margin, paddingRadius, shadowRadius } from "./styleconfig";
+import PixelSpacer from "./pixel-spacer";
 
 
 export default function BasicButton(props){
     const {onPress, title} = props;
-    if(!onPress) {throw new Error('You are missing a function on one of your buttons onPress')}
-    if(!title){throw new Error('You are missing a title on one of your buttons onPress')}
-    const disabled = props?.disabled ?? false;
-    const testID= props?.testID ?? v4();
-    const key = props?.key ?? v4();
 
     return(
-    <View style={{padding:3}}>
-        <Button onPress={onPress} title={title} color={GetColor(Color.Button)} // << main propers here
+
+    <View style={{margin:margin(), backgroundColor:GetColor(Color.Button), padding: paddingRadius(), borderRadius:borderRadius(),shadowRadius:shadowRadius()}}>
+        <Button onPress={props.onPress} title={ props.title} color={GetColor(Color.Button)} // << main propers here
         //Extra attributes added
-        disabled = {disabled} key={key} testID={testID}
+        disabled = { props.disabled} key={ props.key} testID={props.testID}
         /*this is the close of the button tag*//> 
     </View>)
 }
